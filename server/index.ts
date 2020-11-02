@@ -1,0 +1,49 @@
+require('dotenv').config()
+// if you want to use nextRoutes
+// const routes = require('~server/core/nextRoutes')
+
+import express from 'express'
+import next from 'next'
+import morgan from 'morgan'
+import helmet from 'helmet'
+import compression from 'compression'
+import mongoose from 'mongoose';
+
+import apollo from '~server/core/apollo'
+
+const { PORT = '3000', NODE_ENV, MONGODB } = process.env
+const port = parseInt(PORT, 10) || 3000
+const dev = NODE_ENV !== 'production'
+
+console.log('Running env; ' + NODE_ENV)
+
+const nextApp = next({ dev })
+const handle = nextApp.getRequestHandler()
+// if you want to use nextRoutes
+// const handle = routes.getRequestHandler(nextApp)
+
+nextApp.prepare().then(() => {
+  const server = express()
+
+  //security
+  server.use(helmet())
+
+  // Generate logs
+  server.use(
+    morgan(':method :url :status :res[content-length] - :response-time ms')
+  )
+  server.use(compression())
+
+  //start apollo server
+  apollo.applyMiddleware({ app: server })
+
+  server.get('*', (req, res) => handle(req, res))
+  // express().use(handler).listen(3000) //routes handle way
+  mongoose
+  .connect(MONGODB, { useNewUrlParser: true })
+  .then(() => {
+    console.log('MongoDB Connected');
+    return server.listen(port);
+  })
+  .then(() => console.info(`Ready on port ${port}`))
+})
