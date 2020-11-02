@@ -1,10 +1,11 @@
-<h1 align="center">React + GraphQL + Next.js + Typescript + MongoDb + Styled Components bootstrap project</h1>
+<h1 align="center">React + GraphQL + Next.js + Typescript + MongoDB + Styled Components bootstrap project</h1>
 
 <p align="center">
   <a href="https://www.typescriptlang.org/" target="_blank"><img src="https://img.shields.io/badge/Typescript-v4.0.5-blue.svg?logo=TypeScript"></a>
   <a href="https://nextjs.org/" target="_blank"><img src="https://img.shields.io/badge/Next.js-v10.0.0-blueviolet.svg"></a>
   <a href="https://reactjs.org/" target="_blank"><img src="https://img.shields.io/badge/React-v17.0.1-%238DD6F9.svg?logo=React"></a>
-  <a href="https://graphql.org/" target="_blank"><img src="https://img.shields.io/badge/GraphQL-v14.5.8-ff69b4.svg?logo=GraphQL"></a>
+  <a href="https://graphql.org/" target="_blank"><img src="https://img.shields.io/badge/GraphQL-v15.3.0-ff69b4.svg?logo=GraphQL"></a>
+  <a href="https://mongoosejs.com" target="_blank"><img src="https://img.shields.io/badge/Mongoose-v5.10.11-green"></a>
   <a href="https://github.com/prettier/prettier" target="_blank"><img src="https://img.shields.io/badge/styled_with-prettier-ff69b4.svg"></a>
 
 </p>
@@ -16,7 +17,7 @@
 - Typescript
 - SCSS
 - Apollo
-- GraphQl
+- GraphQL
 - EsLint
 - Prettier
 - MongoDB
