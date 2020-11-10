@@ -1,11 +1,11 @@
 {
-  "name": "nextjs-graphql-typescript-mongodb-template",
+  "name": "greenswap",
   "version": "0.1.0",
-  "description": "React + GraphQL + Next.js + Typescript + MongoDb + Styled Components bootstrap project",
+  "description": "GreenSwap",
   "author": "Bartosz Błaszczak",
   "email": "bartosz.blaszczak@codingsenpai.com",
   "license": "MIT",
-  "url": "https://github.com/Coding-Senpai/nextjs-graphql-typescript-mongodb-template",
+  "url": "https://github.com/Coding-Senpai/GreenSwap",
   "keywords": [
     "express",
     "API",
