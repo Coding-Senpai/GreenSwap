@@ -12,7 +12,7 @@ const { NODE_ENV } = process.env
 
 const httpLink = new HttpLink({
   uri: NODE_ENV !== 'production' ? '/graphql' : GRAPHQL_URL,
-  fetch: fetch,
+  fetch: fetch as any,
   credentials: 'same-origin',
 })
 
