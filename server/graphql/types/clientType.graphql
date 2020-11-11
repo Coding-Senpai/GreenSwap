@@ -8,12 +8,12 @@ type Mutation {
   updateUser(newName: String): Client
 }
 
-type Client {
-  id: ID!
-  username: String
-  email: String
-  name: String
-  bio: String
-  avatar: String
-  createdAt: IsoDate
+type Client @entity {
+  id: ID! @id
+  username: String @column
+  email: String @column
+  name: String @column
+  bio: String @column
+  avatar: String @column
+  createdAt: IsoDate @column
 }
