@@ -4,8 +4,8 @@ import { FRAGMENT_wholeUser } from '~graphql/fragments'
 export const PROFILE_BY_USERNAME = gql`
   ${FRAGMENT_wholeUser}
 
-  query client($username: String!) {
-    client(username: $username) {
+  query user($username: String!) {
+    user(username: $username) {
       otherField
       ...wholeUserObject
     }

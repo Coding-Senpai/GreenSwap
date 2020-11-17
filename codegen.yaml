@@ -8,7 +8,6 @@ generates:
   ./server/types.ts:
     plugins:
       - typescript
-      - typescript-mongodb
     config:
       skipTypename: true
   ./graphql/types.ts:

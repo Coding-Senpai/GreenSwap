@@ -13,23 +13,35 @@ export type Scalars = {
 }
 
 export type Query = {
-  clients?: Maybe<Array<Maybe<Client>>>
-  client?: Maybe<Client>
+  users?: Maybe<Array<Maybe<User>>>
+  user?: Maybe<User>
 }
 
-export type QueryClientArgs = {
+export type QueryUserArgs = {
   id: Scalars['ID']
 }
 
+export type RegisterInput = {
+  username: Scalars['String']
+  email: Scalars['String']
+  password: Scalars['String']
+  confirmPassword: Scalars['String']
+}
+
 export type Mutation = {
-  updateUser?: Maybe<Client>
+  updateUser?: Maybe<User>
+  registerUser?: Maybe<User>
 }
 
 export type MutationUpdateUserArgs = {
   newName?: Maybe<Scalars['String']>
 }
 
-export type Client = {
+export type MutationRegisterUserArgs = {
+  registerInput?: Maybe<RegisterInput>
+}
+
+export type User = {
   id: Scalars['ID']
   username?: Maybe<Scalars['String']>
   email?: Maybe<Scalars['String']>
@@ -37,20 +49,5 @@ export type Client = {
   bio?: Maybe<Scalars['String']>
   avatar?: Maybe<Scalars['String']>
   createdAt?: Maybe<Scalars['IsoDate']>
-}
-
-export type AdditionalEntityFields = {
-  path?: Maybe<Scalars['String']>
-  type?: Maybe<Scalars['String']>
-}
-
-import { ObjectID } from 'mongodb'
-export type ClientDbObject = {
-  _id: ObjectID
-  username?: Maybe<string>
-  email?: Maybe<string>
-  name?: Maybe<string>
-  bio?: Maybe<string>
-  avatar?: Maybe<string>
-  createdAt?: Maybe<any>
+  token: Scalars['String']
 }

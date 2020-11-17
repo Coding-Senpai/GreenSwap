@@ -42,6 +42,7 @@
     "apollo-link-http": "^1.5.16",
     "apollo-server-express": "^2.19.0",
     "autoprefixer": "^9.7.3",
+    "bcrypt": "^5.0.0",
     "compression": "^1.7.4",
     "cross-env": "^7.0.0",
     "dotenv-webpack": "^1.7.0",
@@ -73,7 +74,6 @@
   "devDependencies": {
     "@graphql-codegen/cli": "^1.17.10",
     "@graphql-codegen/typescript": "^1.17.10",
-    "@graphql-codegen/typescript-mongodb": "^1.17.8",
     "@graphql-codegen/typescript-operations": "^1.17.9",
     "@graphql-codegen/typescript-react-apollo": "^2.1.1",
     "@graphql-codegen/typescript-resolvers": "^1.17.10",

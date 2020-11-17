@@ -23,23 +23,35 @@ export type Scalars = {
 }
 
 export type Query = {
-  clients?: Maybe<Array<Maybe<Client>>>
-  client?: Maybe<Client>
+  users?: Maybe<Array<Maybe<User>>>
+  user?: Maybe<User>
 }
 
-export type QueryClientArgs = {
+export type QueryUserArgs = {
   id: Scalars['ID']
 }
 
+export type RegisterInput = {
+  username: Scalars['String']
+  email: Scalars['String']
+  password: Scalars['String']
+  confirmPassword: Scalars['String']
+}
+
 export type Mutation = {
-  updateUser?: Maybe<Client>
+  updateUser?: Maybe<User>
+  registerUser?: Maybe<User>
 }
 
 export type MutationUpdateUserArgs = {
   newName?: Maybe<Scalars['String']>
 }
 
-export type Client = {
+export type MutationRegisterUserArgs = {
+  registerInput?: Maybe<RegisterInput>
+}
+
+export type User = {
   id: Scalars['ID']
   username?: Maybe<Scalars['String']>
   email?: Maybe<Scalars['String']>
@@ -47,6 +59,7 @@ export type Client = {
   bio?: Maybe<Scalars['String']>
   avatar?: Maybe<Scalars['String']>
   createdAt?: Maybe<Scalars['IsoDate']>
+  token: Scalars['String']
 }
 
 export type ResolverTypeWrapper<T> = Promise<T> | T
@@ -168,9 +181,10 @@ export type ResolversTypes = {
   IsoDate: ResolverTypeWrapper<Scalars['IsoDate']>
   Query: ResolverTypeWrapper<{}>
   ID: ResolverTypeWrapper<Scalars['ID']>
-  Mutation: ResolverTypeWrapper<{}>
+  RegisterInput: RegisterInput
   String: ResolverTypeWrapper<Scalars['String']>
-  Client: ResolverTypeWrapper<Client>
+  Mutation: ResolverTypeWrapper<{}>
+  User: ResolverTypeWrapper<User>
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>
 }
 
@@ -179,9 +193,10 @@ export type ResolversParentTypes = {
   IsoDate: Scalars['IsoDate']
   Query: {}
   ID: Scalars['ID']
-  Mutation: {}
+  RegisterInput: RegisterInput
   String: Scalars['String']
-  Client: Client
+  Mutation: {}
+  User: User
   Boolean: Scalars['Boolean']
 }
 
@@ -194,16 +209,16 @@ export type QueryResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']
 > = {
-  clients?: Resolver<
-    Maybe<Array<Maybe<ResolversTypes['Client']>>>,
+  users?: Resolver<
+    Maybe<Array<Maybe<ResolversTypes['User']>>>,
     ParentType,
     ContextType
   >
-  client?: Resolver<
-    Maybe<ResolversTypes['Client']>,
+  user?: Resolver<
+    Maybe<ResolversTypes['User']>,
     ParentType,
     ContextType,
-    RequireFields<QueryClientArgs, 'id'>
+    RequireFields<QueryUserArgs, 'id'>
   >
 }
 
@@ -212,16 +227,22 @@ export type MutationResolvers<
   ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']
 > = {
   updateUser?: Resolver<
-    Maybe<ResolversTypes['Client']>,
+    Maybe<ResolversTypes['User']>,
     ParentType,
     ContextType,
     RequireFields<MutationUpdateUserArgs, never>
   >
+  registerUser?: Resolver<
+    Maybe<ResolversTypes['User']>,
+    ParentType,
+    ContextType,
+    RequireFields<MutationRegisterUserArgs, never>
+  >
 }
 
-export type ClientResolvers<
+export type UserResolvers<
   ContextType = any,
-  ParentType extends ResolversParentTypes['Client'] = ResolversParentTypes['Client']
+  ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']
 > = {
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>
   username?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>
@@ -234,6 +255,7 @@ export type ClientResolvers<
     ParentType,
     ContextType
   >
+  token?: Resolver<ResolversTypes['String'], ParentType, ContextType>
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>
 }
 
@@ -241,7 +263,7 @@ export type Resolvers<ContextType = any> = {
   IsoDate?: GraphQLScalarType
   Query?: QueryResolvers<ContextType>
   Mutation?: MutationResolvers<ContextType>
-  Client?: ClientResolvers<ContextType>
+  User?: UserResolvers<ContextType>
 }
 
 /**
