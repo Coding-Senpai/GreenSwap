@@ -1,5 +1,6 @@
+import { ApolloProvider } from '@apollo/client'
 import App from 'next/app'
-import { ApolloProvider } from '@apollo/react-hooks'
+import React from 'react'
 
 import apollo from '~lib/apolloClient'
 import '~styles/main.scss'
